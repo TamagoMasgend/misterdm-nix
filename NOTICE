@@ -1,0 +1,19 @@
+misterdm-nix: Nix packaging for Mister Download Manager.
+
+Copyright (C) 2026 the misterdm-nix packaging authors.
+
+The Nix packaging and the patches in this repository are licensed under the GNU
+General Public License, version 3 or (at your option) any later version
+(GPL-3.0-or-later). The full license text is in the LICENSE file.
+
+The packaged application, Mister Download Manager, remains copyright its
+upstream authors and is distributed under GPL-3.0-or-later. Upstream source:
+https://github.com/anefzaoui/misterdownloadmanager (tag v0.5.2, commit
+605a0c74e50361afe77bf1721d7172636bd5c57e).
+
+This is an unofficial packaging repository, not affiliated with the upstream
+author.
+
+The two source patches are applied by `postPatch` in
+`pkgs/misterdownloadmanager.nix`; each injected change carries a dated
+"Modified by misterdm-nix (2026-11-10)" notice in the changed Rust file.

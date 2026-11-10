@@ -83,7 +83,8 @@ the terminal.
   Vulkan only when that renderer is selected (View → Draw with → Vulkan).
 - **GPLv3 §5(a) notices and licensing.** Both source patches inject a dated
   `Modified by misterdm-nix (2026-11-10)` comment into the changed Rust file.
-  The packaging and patches are GPL-3.0-or-later (see [`LICENSE`](LICENSE)).
+  The packaging and patches are GPL-3.0-or-later; see [`LICENSE`](LICENSE) for
+  the GPLv3 text and [`NOTICE`](NOTICE) for the packaging notice.
 
 ## Runtime dependencies
 
@@ -162,8 +163,9 @@ a missing `outputHashes` entry with the value it expected.
 
 ## License
 
-The Nix packaging and patches in this repository are GPL-3.0-or-later; the full
-text and the packaging copyright notice are in [`LICENSE`](LICENSE).
+[`LICENSE`](LICENSE) is the GPLv3 text, byte-identical to the upstream
+`LICENSE` at the pinned tag. [`NOTICE`](NOTICE) holds the packaging copyright
+and GPL-3.0-or-later notice for the Nix packaging and patches.
 
 Mister Download Manager itself is GPL-3.0-or-later, copyright its upstream
 authors. It is built from tag
