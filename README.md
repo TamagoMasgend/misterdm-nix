@@ -7,6 +7,9 @@ release tag (commit
 [`605a0c7`](https://github.com/anefzaoui/misterdownloadmanager/commit/605a0c74e50361afe77bf1721d7172636bd5c57e)).
 The version comes from the workspace `Cargo.toml` at that tag.
 
+This is an unofficial packaging repository, not affiliated with the upstream
+author.
+
 The upstream repository has no `flake.nix` or other Nix expressions. It is a
 Rust workspace (egui); this flake builds the four programs its Linux installer
 ships (`tools/installer/build-linux.sh`):
@@ -78,6 +81,9 @@ the terminal.
   the windowing and GL libraries are added to the program's `RUNPATH`, because
   winit and glutin load X11 or Wayland plus OpenGL/EGL at run time. wgpu loads
   Vulkan only when that renderer is selected (View → Draw with → Vulkan).
+- **GPLv3 §5(a) notices and licensing.** Both source patches inject a dated
+  `Modified by misterdm-nix (2026-11-10)` comment into the changed Rust file.
+  The packaging and patches are GPL-3.0-or-later (see [`LICENSE`](LICENSE)).
 
 ## Runtime dependencies
 
@@ -156,5 +162,18 @@ a missing `outputHashes` entry with the value it expected.
 
 ## License
 
-Mister Download Manager is GPL-3.0-or-later. Upstream's `LICENSE` and
+The Nix packaging and patches in this repository are GPL-3.0-or-later; the full
+text and the packaging copyright notice are in [`LICENSE`](LICENSE).
+
+Mister Download Manager itself is GPL-3.0-or-later, copyright its upstream
+authors. It is built from tag
+[`v0.5.2`](https://github.com/anefzaoui/misterdownloadmanager/tree/v0.5.2)
+(commit
+[`605a0c7`](https://github.com/anefzaoui/misterdownloadmanager/commit/605a0c74e50361afe77bf1721d7172636bd5c57e)).
+The two patches are applied by `postPatch` in
+[`pkgs/misterdownloadmanager.nix`](pkgs/misterdownloadmanager.nix), with the
+dated modification notices described above. Upstream's `LICENSE` and
 `ATTRIBUTION.md` are installed under `share/doc/misterdownloadmanager`.
+
+This is an unofficial packaging repository, not affiliated with the upstream
+author.

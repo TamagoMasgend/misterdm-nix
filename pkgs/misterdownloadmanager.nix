@@ -138,10 +138,12 @@ rustPlatform.buildRustPackage {
     # replace a read-only store path). Install::System's assets() is empty.
     substituteInPlace crates/tools/src/update.rs \
       --replace-fail '    let Some(path) = exe.to_str() else {' \
-        '    if exe.starts_with("/nix/store/") {
-               return Install::System;
-           }
-           let Some(path) = exe.to_str() else {'
+        '    // Modified by misterdm-nix (2026-11-10): Nix store copies are updated by Nix, so
+        // report them as Install::System; MDM offers no in-place update for it.
+        if exe.starts_with("/nix/store/") {
+            return Install::System;
+        }
+        let Some(path) = exe.to_str() else {'
 
     # Start with the session through the wrapper, so the autostart entry gets the same PATH as
     # a launch from the desktop entry. The wrapper sets MDM_PROGRAM.
@@ -149,7 +151,9 @@ rustPlatform.buildRustPackage {
       --replace-fail '    std::env::var_os("APPIMAGE")
             .map(PathBuf::from)
             .or_else(|| std::env::current_exe().ok())' \
-        '    std::env::var_os("MDM_PROGRAM")
+        '    // Modified by misterdm-nix (2026-11-10): prefer the wrapper since it sets MDM_PROGRAM.
+        // The autostart entry then starts the wrapper with the same environment.
+        std::env::var_os("MDM_PROGRAM")
             .map(PathBuf::from)
             .or_else(|| std::env::var_os("APPIMAGE").map(PathBuf::from))
             .or_else(|| std::env::current_exe().ok())'
